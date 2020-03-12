@@ -1,0 +1,10 @@
+<h1>Add a cocktail</h1>
+<%= simple_form_for @cocktail do |f| %>
+  <%= f.input :name %>
+  <%= f.input :image_url %>
+  <%= f.input :ingredients, collection: @ingredients, include_blank: false, include_hidden: false %>
+  <%= f.association :doses do |d|%>
+    <%= d.input :description, label: "Dose" %>
+  <% end %>
+  <%= f.button :submit %>
+<% end %>
