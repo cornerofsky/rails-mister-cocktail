@@ -1,12 +1,12 @@
 <h3>Describe your new experience</h3>
 <%= simple_form_for @cocktail do |f| %>
   <%= f.input :name %>
-  <%= f.input :instructions %>
 
   <%= f.input :ingredients, collection: @ingredients, include_blank: false, include_hidden: false %>
   <%= f.association :doses do |d|%>
     <%= d.input :description, label: "Dose" %>
   <% end %>
+  <%= f.input :instructions %>
   <%= f.input :photo, as: :file %>
   <%= f.button :submit, label: "Create experience" %>
 <% end %>
