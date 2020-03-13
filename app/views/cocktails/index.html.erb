@@ -1,23 +1,13 @@
-<div class="container col-6">
-<% @cocktails.each do |cocktail| %>
-  <div class="card-product">
-    <img src=<%=cocktail.image_url%> />
-    <div class="card-product-infos">
-      <h2><%= link_to cocktail.name, cocktail_path(cocktail)  %></h2>
-        <% cocktail.doses.each do |d|  %>
-      <p><%= d.ingredient.name %> -- <%= d.description %></p>
-      <% end  %>
-      <p><%= link_to "Add a new ingredient", cocktail_doses_new_path(cocktail)  %></p>
-    </div>
-  </div>
-<% end %>
 
-  <div class="card-product">
-    <img src="https://images.unsplash.com/photo-1581673779816-abd51d980828?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" />
-    <div class="card-product-infos">
-      <h2>Add your creation</h2>
-      <p><%= link_to "Add a new cocktail", cocktails_new_path  %></p>
+<div class="cards">
+  <% @cocktails.each do |cocktail| %>
+  <%= link_to cocktail_path(cocktail) do  %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo.key, height: 300, width: 400, crop: :fill %>')">
+      <%= cocktail.name %>
     </div>
-  </div>
-
+    <% end  %>
+  <% end %>
 </div>
+
+
+
